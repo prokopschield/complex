@@ -415,10 +415,20 @@ export class Complex implements Number {
 		} else if (parts[0] === "/") {
 			parts.shift();
 
-			return Complex.mul(
-				left.div(Complex.eval__read_exponentiation(parts)),
-				Complex.eval__read_multiplication(parts)
-			);
+			const tmp = left.div(Complex.eval__read_exponentiation(parts));
+
+			while ((parts[0] as string) === " ") {
+				parts.shift();
+			}
+
+			if (Complex.eval__part_is_end_of_expression(parts[0])) {
+				return tmp;
+			} else {
+				return Complex.mul(
+					tmp,
+					Complex.eval__read_multiplication(parts)
+				);
+			}
 		} else if (!Complex.eval__part_is_end_of_expression(parts[0])) {
 			const L = left.mul(Complex.eval__read_expression(parts));
 
