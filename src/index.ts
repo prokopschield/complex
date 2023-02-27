@@ -132,6 +132,15 @@ export class Complex implements Number {
 
 			real = (a * c + b * d) / den;
 			imag = (b * c - a * d) / den;
+
+			if (isNaN(real) || isNaN(imag)) {
+				const nom = new Complex(a, b);
+				const den = new Complex(c, d);
+
+				throw new Error(
+					`Cannot evaluate ${nom.toExponential()} / ${den}`
+				);
+			}
 		}
 
 		return new Complex(real, imag);
