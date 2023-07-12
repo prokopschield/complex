@@ -285,7 +285,7 @@ export class Complex implements Number {
 
 	/** convert this number to positive percentage */
 	toPercentage() {
-		return `${this.abs / 100} %`;
+		return `${this.abs * 100} %`;
 	}
 
 	static eval__part_is_end_of_expression(part: string): boolean {
