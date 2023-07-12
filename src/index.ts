@@ -283,6 +283,11 @@ export class Complex implements Number {
 		return this.abs;
 	}
 
+	/** convert this number to positive percentage */
+	toPercentage() {
+		return `${this.abs / 100} %`;
+	}
+
 	static eval__part_is_end_of_expression(part: string): boolean {
 		return (
 			part === "+" ||
@@ -529,6 +534,7 @@ export class Complex implements Number {
 			.replace(/π/g, String(Math.PI))
 			.replace(/p_i/g, String(Math.PI)) // replace pi with 3.141592653589793
 			.replace(/[ij]/g, "j") // replace i with j
+			.replace(/%/g, "0.01") // replace % with 0.01
 			.replace(/\-_\+/g, "-")
 			.replace(/\+_\-/g, "-")
 			.replace(/\+_\+/g, "+")
