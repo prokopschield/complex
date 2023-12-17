@@ -8,7 +8,8 @@ export function niceround(real: number) {
 	}
 }
 
-export type Real = number | bigint | string;
+export type real = number | bigint | string;
+export type Real = real;
 
 export class Complex implements Number {
 	real = 0;
