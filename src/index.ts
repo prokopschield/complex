@@ -167,9 +167,7 @@ export class Complex implements Number {
 	}
 
 	get angle() {
-		const abs = this.abs || 1;
-
-		return Math.atan2(this.imag / abs, this.real / abs);
+		return Math.atan2(this.imag, this.real);
 	}
 
 	/** root ** exponent */
